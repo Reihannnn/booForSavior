@@ -20,6 +20,7 @@
   
     <%if (locals.item){%>
       <%for (let i = 0  ;i<item.length;i++){%>
+
         <div class="item-box">
           <img src="<%= item[i].cover_image_url%>" alt="" class="image-item">
           <div>
@@ -27,6 +28,14 @@
             <p>author : <%= item[i].author%></p>
             <p>isbn : <%= item[i].isbn%></p>
             <span> review : <%=item[i].review %></span>
+
+            <form action="/delete" method="post">
+              <!-- Hidden input untuk mengirimkan ID item -->
+              <input type="hidden" name="deleteItemId" value="<%= item[i].id %>">
+    
+              <!-- Tombol submit untuk menghapus, dengan label 'Delete' -->
+              <input class="deleteButton" type="submit" value="Delete">
+            </form>
           </div>
         </div>
         <%}%>

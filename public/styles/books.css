@@ -71,3 +71,17 @@ h2{
 .title-item a:hover{
   text-decoration: underline;
 }
+
+.deleteButton{
+  padding: 0.8rem;
+  background-color: red;
+  border: none;
+  width: 90px;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 0.4rem;
+}
+
+.deleteButton:hover{
+  cursor: pointer;
+}

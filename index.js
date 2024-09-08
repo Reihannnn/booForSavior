@@ -32,6 +32,8 @@ app.get("/", (req,res) =>{
 app.get("/books" , async (req,res) =>{
     const getData = await db.query(`select * from bookItems`)
     bookItem = getData.rows
+
+    console.log(bookItem)
   
     res.render("books.ejs", {
       item : bookItem
@@ -95,6 +97,23 @@ app.post("/addBooks/add", async (req, res) =>{
 
   }catch(err){
     console.log(err)
+  }
+})
+
+// delete bookItem from database
+
+app.post('/delete',async (req,res) =>{
+  const getId = req.body.deleteItemId; 
+  try{
+
+    await db.query('DELETE FROM bookItems where id = $1',[getId])
+    res.redirect("/books")
+
+  } catch(err){
+
+    console.error('Terjadi kesalahan saat menghapus item:', err);
+    res.status(500).send('Error menghapus item.')
+    
   }
 })
 

@@ -1,0 +1,30 @@
+body{
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+form{
+  display: flex;
+  flex-direction: column;  
+  width: 30%;
+}
+
+input{
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1.3rem;
+}
+
+textarea{
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1.3rem;
+}
+
+form > button{
+  width: 200px;
+  padding: 0.5rem;
+}
+

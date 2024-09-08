@@ -47,6 +47,7 @@ app.get('/books/:isbn', async (req, res) => {
     const bookData = response.data[`ISBN:${isbn}`];
     
     console.log(bookData)
+    console.log(bookData.cover.large)
 
     if (bookData) {
       // Render template EJS dengan data buku
@@ -60,6 +61,42 @@ app.get('/books/:isbn', async (req, res) => {
   }
 });
 
+
+// post add book
+
+app.post('/addBooks', async(req,res) =>{
+  // const getTtitle = 
+  try{
+    res.render("addBooks.ejs")
+  }catch(err){
+    console.log(err)
+  }
+})
+
+app.post("/addBooks/add", async (req, res) =>{
+  try{
+    // get from this atribut name in elemnet .title / .author / .isbn etc
+    const getTitle = req.body.title 
+    const getAuthor = req.body.author
+    const getISBN = req.body.isbn
+    const getRating = req.body.user_rating
+    const getReview = req.body.review
+
+    // get image use axios.get dengan patokan getISBN
+    const response = await axios.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${getISBN}&format=json&jscmd=data`);
+    
+    const bookData = response.data[`ISBN:${getISBN}`];
+    const getCover = bookData.cover.large
+
+    // insert data from formPage to database 
+    await db.query("insert into bookItems (title, author, isbn,cover_image_url,user_rating,review) values ($1,$2,$3,$4,$5,$6)", [getTitle,getAuthor,getISBN,getCover,getRating,getReview])
+
+    res.redirect("/books")
+
+  }catch(err){
+    console.log(err)
+  }
+})
 
 
 

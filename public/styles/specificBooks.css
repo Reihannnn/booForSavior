@@ -1,0 +1,94 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  height: 100vh;
+}
+
+.section-1{
+  background-color: #3c3c3c;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.left-section1{
+  line-height: 4rem;
+  width: 640px;
+}
+
+.book-title{
+  font-size: 3rem;
+  color: #ececec;
+  margin-bottom: 2.5rem;
+}
+
+.book-url{
+  text-decoration: none;
+  background-color: lightblue;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  color: black;
+  margin-top: 5rem;
+}
+
+.left-section1 > p{
+  text-align: center;
+}
+
+.kotak{
+  width: 200px;
+  height: 200px;
+}
+
+.book-cover{
+  width: 325px;
+  height: 450px;
+}
+
+ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  font-size: 1.3rem;
+}
+
+li{
+  display: flex;
+  flex-direction: column;
+}
+
+.book-atribut{
+  line-height: 2.3rem;
+  margin-top: 3rem;
+}
+
+ul li p:nth-child(2){
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+ul li p:nth-child(1){
+  color: white;
+}
+
+.section-2{
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.section-2 h1{
+  font-size: 5rem;
+}
+
+.section-2 p {
+  font-size: 1.6rem;
+}

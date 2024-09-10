@@ -3,32 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/specificBooks.css">
     <title><%= book.title %> - Book Details</title>
 </head>
 <body>
-    <h1><%= book.title %></h1>
-    <p><strong>Author(s):</strong> 
-        <% book.authors.forEach(author => { %>
-            <span><%= author.name %></span>
-        <% }) %>
-    </p>
-    <p><strong>Publisher(s):</strong> 
-        <% book.publishers.forEach(publisher => { %>
-            <span><%= publisher.name %></span>
-        <% }) %>
-    </p>
-    <p><strong>Published Date:</strong> <%= book.publish_date %></p>
-    <p><strong>Number of Pages:</strong> <%= book.number_of_pages %></p>
-    <p><strong>Description:</strong> <%= book.notes || 'No description available' %></p>
     
-    <h3>Cover</h3>
-    <img src="<%= book.cover.large %>" alt="<%= book.title %> cover">
+    <section class="section-1">
+        <div class="left-section1">
+            <h1 class="book-title"><%= book.title %> &#183 <% book.authors.forEach(author => { %>
+                <span><%= author.name %></span>
+            <% }) %> </h1>
+            <p class=""><a href="<%= book.url %> " class="book-url">More details on Open Library</a></p>
+            <div class="book-atribut">
+                <ul>
+                    <li>
+                        <p>publisher : </p>
+                        <p>
+                        <% book.publishers.forEach(publisher => { %>
+                        <span><%= publisher.name %></span>
+                    <% }) %>
+                    </p>
+                    </li>
+                    <li>
+                        <p>publish date : </p>
+                        <p><%= book.publish_date %></p>
+                    </li>
+                    <li>
+                        <p>isbn :</p> 
+                        <p><%= book.identifiers.isbn_10 || "ISBN not available"%> </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- cover buku -->
+        <img src="<%= book.cover.large %>" alt="<%= book.title %> cover" class="book-cover">
+    </section>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><strong>Identifiers:</strong> LibraryThing: <%= book.identifiers.librarything %>, Goodreads: <%= book.identifiers.goodreads %>, isbn : <%= book.identifiers.isbn_10 || "ISBN not available"%></li>
-    </ul>
-
-    <a href="<%= book.url %>">More details on Open Library</a>
+   <section class="section-2">
+    <h1>"booForSavior"</h1>
+    <p>by : reihan.achmd &#169; 2024</p>
+   </section>
 </body>
 </html>
